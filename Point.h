@@ -14,6 +14,7 @@ using namespace std;
 class Point {
 public:
     Point(int x, int y, int z);
+    Point();
     static int Temp;
     static string temp_hash;
 private:
