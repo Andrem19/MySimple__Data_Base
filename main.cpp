@@ -108,7 +108,7 @@ void isChainValid(string path) {
            if (to_string(h) == vec2[res]){
                validator = true;
            }
-           cout<<"h :"<< h<< endl;
+//           cout<<"h :"<< h<< endl;
         }
     if(validator)
     {
@@ -120,9 +120,6 @@ void isChainValid(string path) {
     };
 
 int main() {
-    Point test;
-    test.get_last_id();
-    test.get_last_hash();
     string path = "simple_DB.csv";
    Menu(path);
    return 0;

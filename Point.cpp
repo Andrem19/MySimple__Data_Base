@@ -19,11 +19,10 @@ Point::Point(int x, int y, int z) {
     hash<string> string_hash;
     size_t h = string_hash(toHash);
     this->curr_hash = h;
-    temp_hash = get_last_hash();
 
 }
 int Point::Temp = stoi(Point::get_last_id());
-string Point::temp_hash = "0";
+
 ostream& operator<<(ostream& os, const Point& point)
 {
     os<<point.Id<<", "<<point.Tm<<", "<<point.x<<", "<<point.y<<", "<<point.z<<", "<<point.curr_hash<<", "<<point.prev_hash<<", ";

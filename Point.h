@@ -16,7 +16,6 @@ public:
     Point(int x, int y, int z);
     Point();
     static int Temp;
-    static string temp_hash;
     static string get_last_id();
 
     string get_last_hash();
