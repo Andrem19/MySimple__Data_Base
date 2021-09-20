@@ -17,10 +17,10 @@ public:
     Point();
     static int Temp;
     static string temp_hash;
-    int get_last_id();
+    static string get_last_id();
 
-    int get_last_hash();
-    vector<string> get_vector();
+    string get_last_hash();
+    static vector<string> get_vector();
     size_t curr_hash;
     string prev_hash;
     int Id;
