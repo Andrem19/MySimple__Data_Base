@@ -40,3 +40,81 @@ auto Id = Tm = x = y = z = curr_hash = 0;
 prev_hash = "0";
 }
 
+int Point::get_last_hash() {
+    return 0;
+}
+
+int Point::get_last_id() {
+    vector<string> vecID;
+    vecID = get_vector();
+    for (int i = 0; i < vecID.size(); ++i) {
+        cout<<"VECTOR - ID: "<<vecID[i]<<endl;
+    }
+    return 0;
+}
+
+vector<string> Point::get_vector()
+{
+    ifstream file("simple_DB.csv");
+    string segment;
+    vector<string> vec;
+    int i = 0;
+    while(getline(file, segment))
+    {
+        vec.push_back(segment);
+        i++;
+    }
+    vector<string> vec2;
+    string s;
+    for (int j = 0; j < vec.size(); ++j) {
+        stringstream ssin(vec[j]);
+
+        while(getline(ssin, s, ' '))
+        {
+            vec2.push_back(s);
+        }
+    }
+    string t;
+    for (int j = 0; j < vec2.size(); ++j) {
+        stringstream ssin(vec2[j]);
+        while(getline(ssin, t, ','))
+        {
+            vec2[j] = t;
+        }
+    }
+    return vec2;
+}
+
+vector<string> get_vector()
+{
+    ifstream file("simple_DB.csv");
+    string segment;
+    vector<string> vec;
+    int i = 0;
+    while(getline(file, segment))
+    {
+        vec.push_back(segment);
+        i++;
+    }
+    vector<string> vec2;
+    string s;
+    for (int j = 0; j < vec.size(); ++j) {
+        stringstream ssin(vec[j]);
+
+        while(getline(ssin, s, ' '))
+        {
+            vec2.push_back(s);
+        }
+    }
+    string t;
+    for (int j = 0; j < vec2.size(); ++j) {
+        stringstream ssin(vec2[j]);
+        while(getline(ssin, t, ','))
+        {
+            vec2[j] = t;
+        }
+    }
+    return vec2;
+}
+
+

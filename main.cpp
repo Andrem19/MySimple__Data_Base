@@ -4,6 +4,8 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <chrono>
+#include <ctime>
 
 void isChainValid(string path);
 void worker(string path);
@@ -22,6 +24,7 @@ int Menu(string path)
                 worker(path);
             case 2:
                 isChainValid(path);
+
         }
     }
     else
@@ -57,9 +60,9 @@ void worker(string path)
 
 void isChainValid(string path) {
     //==========Open the File=============
+    bool validator = false;
     ifstream file(path);
     string segment;
-    bool validation = false;
 
     vector<string> vec;
 
@@ -68,35 +71,46 @@ void isChainValid(string path) {
     while(getline(file, segment))
     {
         vec.push_back(segment);
-//    cout<< vec[i]<< endl;
         i++;
     }
-    //======================================
+    //================Add to vector======================
     vector<string> vec2;
     string s;
     for (int j = 0; j < vec.size(); ++j) {
         stringstream ssin(vec[j]);
 
-        while(getline(ssin, s, ','))
+        while(getline(ssin, s, ' '))
         {
             vec2.push_back(s);
         }
     }
-int z = 13;
-    while (z <= vec2.size()) {
-        if (vec2[z] == vec2[z+=9])
+    //=====DELETE COMAS=======
+    string t;
+    for (int j = 0; j < vec2.size(); ++j) {
+        stringstream ssin(vec2[j]);
+        while(getline(ssin, t, ','))
         {
-            validation = true;
+            vec2[j] = t;
         }
-        else
-        {
-            validation = false;
-            cout<<"Chain is not valid"<<endl;
-            break;
-        }
-        z+=7;
     }
-    if(validation)
+    //===================NEW - VALIDATOR======
+    string toHash;
+    hash<string> string_hash;
+        for (int m = 5; m < vec2.size()-7; m += 7) {
+            int d = m+4;
+            int l = m+5;
+            int k = m+6;
+            int q = m+3;
+            int c = m+2;
+            int res = m+7;
+           toHash = vec2[d] + vec2[l] + vec2[k] +vec2[q] + vec2[c] +vec2[m];
+           size_t h = string_hash(toHash);
+           if (to_string(h) == vec2[res]){
+               validator = true;
+           }
+           cout<<"h :"<< h<< endl;
+        }
+    if(validator)
     {
         cout<< "Chain is valid!"<< endl;
     }
@@ -106,6 +120,8 @@ int z = 13;
     };
 
 int main() {
+    Point test;
+    test.get_last_id();
     string path = "simple_DB.csv";
    Menu(path);
    return 0;
